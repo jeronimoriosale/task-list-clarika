@@ -1,0 +1,31 @@
+<div class="container d-flex justify-content-center">
+  <div class="col-8 card">
+    <h1 class="text-center">Task List</h1>
+    <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+      <div class="d-flex">
+        <mat-form-field class="col-9">
+          <input
+            formControlName="taskName"
+            matInput
+            placeholder="Escribe una tarea"
+          />
+        </mat-form-field>
+        <div class="add-btn col-3 d-flex justify-content-center">
+          <button
+            mat-raised-button
+            type="submit"
+            [disabled]="taskForm.get('taskName')?.value === ''"
+          >
+            Agregar
+          </button>
+        </div>
+      </div>
+    </form>
+    <div class="item-list-container">
+      <app-item-list
+        [taskList]="taskList"
+        (deleteTask)="onDeleteTask($event)"
+      ></app-item-list>
+    </div>
+  </div>
+</div>

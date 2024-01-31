@@ -1,0 +1,20 @@
+<div
+  *ngFor="let task of taskList; let i = index"
+  class="d-flex align-items-center justify-content-between"
+>
+  <div class="d-flex align-items-center col-10">
+    <mat-checkbox
+      color="primary"
+      [checked]="task.isCompleted"
+      (change)="onToggleTaskCompletion(i)"
+    ></mat-checkbox>
+
+    <div
+      [ngClass]="{ 'task-completed': task.isCompleted }"
+      class="text-truncate"
+    >
+      {{ task.task }}
+    </div>
+  </div>
+  <mat-icon class="pointer" (click)="deleteTaskDialog(i)">delete</mat-icon>
+</div>
